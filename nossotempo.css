@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-tap-highlight-color: transparent; /* Remove azul ao toque */
+  outline: none;
+}
+
+body {
+  background: linear-gradient(to bottom, #f9d7dc, #fd9abb);
+  color: #222;
+  display: flex;
+  justify-content: center;
+  /* Tirar alinhamento vertical para poder controlar via main */
+  align-items: flex-start; 
+  height: 100%;
+    margin: 0;
+      padding: 0;
+  text-align: center;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative; /* para o botão voltar ficar dentro */
+}
+
+main {
+  max-width: 320px;
+  width: 100%;
+  margin-top: 60px; /* sobe o conteúdo, afastando do topo */
+}
+
+h1 {
+  margin-top: 0; /* remover margem para ficar mais perto do topo do main */
+  color: #d6006e;
+  font-size: 24px;
+  margin-bottom: 70px;
+}
+
+.photo-container {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  border: 4px solid #ccc;
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.counter-years {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.counter-time {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #222;
+  user-select: none;
+}
+
+.counter-top,
+.counter-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(255, 105, 135, 0.3);
+  flex-wrap: wrap;
+}
+
+.counter-bottom {
+  background: #fff0f3;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #e4377f;
+}
+
+.counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+
+.counter-item span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e4377f;
+}
+
+.counter-bottom .counter-item span {
+  color: #e4377f;
+}
+
+.counter-item small {
+  font-size: 0.9rem;
+  margin-top: 4px;
+  color: inherit;
+}
+
+.btn-voltar {
+  position: fixed; /* fixo na tela */
+  top: 20px;
+  left: 20px;
+  background-color: #ffdce5;
+  color: #d6006e;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 105, 135, 0.2);
+  transition: background 0.3s ease;
+  z-index: 1000; /* acima do conteúdo */
+}
+
+.btn-voltar:hover {
+  background-color: #ffc4d1;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+
+  .photo-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .counter-time {
+    font-size: 2rem;
+  }
+
+  .counter-bottom {
+    font-size: 1.1rem;
+  }
+
+  .counter-item span {
+    font-size: 1.6rem;
+  }
+
+  .counter-item small {
+    font-size: 0.8rem;
+  }
+
+  .btn-voltar {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  main {
+    margin-top: 40px;
+  }
+}
+
+.blur-box {
+  position: relative;
+  background: #fff0f3;
+  border-radius: 15px;
+  padding: 20px 15px;
+  margin-top: 60px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 10px rgba(255, 105, 135, 0.3);
+  user-select: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.blur-text {
+  color: transparent;
+  text-shadow:
+    0 0 5px rgba(255, 105, 135, 0.5),
+    0 0 10px rgba(255, 105, 135, 0.4);
+  filter: blur(4px);
+  transition: filter 0.5s ease, color 0.5s ease, text-shadow 0.5s ease;
+  font-size: 1rem;
+  line-height: 1.4em;
+  text-align: center;
+  user-select: text;
+  pointer-events: none;
+}
+
+.blur-box.revealed .blur-text {
+  filter: none;
+  color: #d6006e;
+  text-shadow: none;
+  pointer-events: auto;
+}
+
+.reveal-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d6006e;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 105, 135, 0.5);
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.reveal-btn:hover {
+  background-color: #a50054;
+}
+
+.blur-box.revealed .reveal-btn {
+  display: none;
+}

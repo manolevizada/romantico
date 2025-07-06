@@ -1,0 +1,217 @@
+/* Reset e remoção do azul ao toque em botões e elementos clicáveis */
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden; /* bloqueia scroll horizontal */
+  overflow-y: auto; /* scroll vertical normal */
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(to bottom, #f9d7dc, #fd9abb);
+  text-align: center;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #d6006d;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+p {
+  margin-bottom: 20px;
+  color: #d6006d;
+  font-weight: 500;
+}
+
+/* Botão voltar fixo */
+.btn-voltar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #ffdce5;
+  color: #d6006e;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 105, 135, 0.2);
+  transition: background 0.3s ease;
+  z-index: 1000;
+}
+
+.btn-voltar:hover {
+  background-color: #ffc4d1;
+}
+
+/* Container do jogo: grid fixo 3x4 */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(4, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 40px; /* Mantém espaçamento para descer o jogo */
+  max-width: 340px; /* 3x100 + 2x10 gap */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cartas */
+.card {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  transform: rotateY(0deg);
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px dashed #d08fa7;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+  background-color: #ffb6c1;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-back {
+  background-color: #fff;
+  transform: rotateY(0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #d6006d;
+  font-weight: bold;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 90%;
+  z-index: 1500;
+}
+
+.popup.show {
+  display: block;
+}
+
+.popup h2 {
+  color: #d6006d;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.popup-buttons button {
+  background-color: #ff007f;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.popup-buttons button:hover {
+  background-color: #d6006d;
+}
+
+/* Responsivo para celulares */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+    margin-top: 60px;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  .game-board {
+    grid-template-columns: repeat(3, 90px);
+    grid-template-rows: repeat(4, 90px);
+    grid-gap: 8px;
+    max-width: 290px;
+  }
+
+  .card {
+    width: 90px;
+    height: 90px;
+  }
+
+  .card-back {
+    font-size: 28px;
+  }
+
+  .btn-voltar {
+    font-size: 14px;
+    padding: 8px 14px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .popup {
+    padding: 20px;
+  }
+
+  .popup-buttons button {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}

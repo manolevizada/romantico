@@ -1,0 +1,156 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, #f9d7dc, #fd9abb);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.container {
+  text-align: center;
+  background-color: #fff0f5;
+  padding: 20px 16px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 350px;
+  margin: 40px auto;
+}
+
+.icon {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #d63384;
+}
+
+p {
+  margin: 5px 0 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 20px auto;
+}
+
+.lock-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  user-select: none;
+  pointer-events: none;
+}
+
+#password {
+  font-size: 24px;
+  padding: 10px 10px 10px 45px;
+  text-align: center;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  color: black;
+  letter-spacing: 6px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.keypad button {
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff99c8;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.keypad button:hover:not(:disabled) {
+  background-color: #ff69b4;
+}
+
+.keypad button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.result-img {
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#btnAvancar {
+  margin-top: 15px;
+  padding: 12px 25px;
+  font-size: 18px;
+  background-color: #a52864;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#btnAvancar:hover {
+  background-color: #eb3891;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  #password {
+    font-size: 20px;
+    padding: 8px 8px 8px 40px;
+  }
+
+  .keypad button {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  #btnAvancar {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}

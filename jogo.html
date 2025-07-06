@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>Jogo da Memória</title>
+  <link rel="stylesheet" href="jogo.css" />
+</head>
+<body>
+  <header class="header-container">
+    <button class="btn-voltar" onclick="window.location.href='menu.html'">← Voltar</button>
+    <h1>Um joguinho para você ♡</h1>
+  </header>
+
+  <p class="subtitulo">tente acertar todas as fotos</p>
+
+  <div class="game-board" id="gameBoard"></div>
+
+  <div class="popup" id="popup">
+    <h2>Você acertou tudo!</h2>
+    <p>Parabéns, você encontrou todos os pares!</p>
+    <div class="popup-buttons">
+      <button onclick="closePopup()">Fechar</button>
+      <button onclick="restartGame()">Tentar Novamente</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f9d7dc, #fd9abb);
+  overflow: hidden;
+}
+
+/* Remover o destaque azul ao clicar em elementos no celular */
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+h1 {
+  margin-top: 10px;
+  color: #d6006e;
+  font-size: 24px;
+}
+
+p {
+  margin-top: -20px;
+  color: #d6006e;
+}
+
+/* Stack de fotos */
+.stack {
+  position: relative;
+  width: 220px; /* 📏 nova largura */
+  height: 400px; /* ✅ altura original */
+  margin-top: 20px;
+  perspective: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.4s ease, top 0.4s ease, left 0.4s ease;
+  object-fit: cover;
+  border: 4px solid white;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+}
+
+/* Game Board */
+#gameBoard {
+  margin-top: 40px;
+  width: 520px;
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  grid-gap: 10px;
+}
+
+.card {
+  width: 120px;
+  height: 160px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card-back {
+  background-color: #d6006e;
+  color: white;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+  user-select: none;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.popup-content button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #d6006e;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #a50054;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-voltar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #ffdce5;
+  color: #d6006e;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 105, 135, 0.2);
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.btn-voltar:hover {
+  background-color: #ffc4d1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 70px;
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  p {
+    font-size: 14px;
+    text-align: center;
+    margin-top: -10px;
+    padding: 0 10px;
+  }
+
+  .stack {
+    width: 80vw; /* 📱 menor largura no celular */
+    height: 60vh; /* ✅ altura maior */
+  }
+
+  .btn-voltar {
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  #gameBoard {
+    width: 90vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 8px;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+  }
+}
